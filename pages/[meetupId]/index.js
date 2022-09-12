@@ -51,7 +51,7 @@ export async function getStaticProps(context) {
         image: singleMeetup.image,
         description: singleMeetup.description,
       },
-    },
+    },  
   };
 }
 
@@ -75,7 +75,10 @@ export async function getStaticPaths() {
     paths: meetups.map((item) => {
       return { params: { meetupId: item["_id"].toString() } };
     }),
-    fallback: false, // false: returns 404 on unspecified ids, true: renders dynamically, useful for preparing most used pages
+    // false: returns 404 on unspecified ids, 
+    //true/blocking: renders dynamically, useful for preparing most used pages, but true shows empty page and 
+    //then renders, and blocking pre renders and shows when done
+    fallback: 'blocking', 
   };
 }
 

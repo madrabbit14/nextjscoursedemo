@@ -27,7 +27,7 @@ export async function getStaticProps() {
   //since this method is also never run client-side, you can use it to gather data without exposing backend.
   console.log("index.js getStaticProps: connecting");
   const client = await MongoClient.connect(
-    "mongodb+srv://reacttestuser:react-test-user-01230@cluster0.ncjbaio.mongodb.net/meetups?retryWrites=true&w=majority"
+    `mongodb+srv://${process.env.REACT_APP_DB_USER}:${process.env.REACT_APP_DB_PW}@${process.env.REACT_APP_DB_URL}${process.env.REACT_APP_DB_PARAMS}`
   );
   console.log("index.js getStaticProps: connected. getting db");
   const db = client.db();

@@ -29,7 +29,7 @@ export async function getStaticProps(context) {
 
   console.log("getStaticProps: connecting");
   const client = await MongoClient.connect(
-    "mongodb+srv://reacttestuser:react-test-user-01230@cluster0.ncjbaio.mongodb.net/meetups?retryWrites=true&w=majority"
+    `mongodb+srv://${process.env.REACT_APP_DB_USER}:${process.env.REACT_APP_DB_PW}@${process.env.REACT_APP_DB_URL}${process.env.REACT_APP_DB_PARAMS}`
   );
   console.log("getStaticProps: connected. getting db");
   const db = client.db();
@@ -59,7 +59,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   console.log("getStaticPaths: connecting");
   const client = await MongoClient.connect(
-    "mongodb+srv://reacttestuser:react-test-user-01230@cluster0.ncjbaio.mongodb.net/meetups?retryWrites=true&w=majority"
+    `mongodb+srv://${process.env.REACT_APP_DB_USER}:${process.env.REACT_APP_DB_PW}@${process.env.REACT_APP_DB_URL}${process.env.REACT_APP_DB_PARAMS}`
   );
   console.log("getStaticPaths: connected. getting db");
   const db = client.db();

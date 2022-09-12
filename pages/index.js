@@ -47,7 +47,7 @@ export async function getStaticProps() {
         id: meetup["_id"].toString(),
       })),
     },
-    revalidate: 180, //seconds
+    revalidate: 5, //seconds
   }; //always need to return obj
 }
 
